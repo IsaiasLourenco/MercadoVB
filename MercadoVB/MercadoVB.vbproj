@@ -48,6 +48,30 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -73,7 +97,74 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbrirCaixa.Designer.vb">
+      <DependentUpon>AbrirCaixa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AbrirCaixa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CaixaVBDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CaixaVBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CaixaVBDataSet.vb">
+      <DependentUpon>CaixaVBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes.Designer.vb">
+      <DependentUpon>Clientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComboboxAutoComplete.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Conexao.vb" />
+    <Compile Include="ConsultaEstoque.Designer.vb">
+      <DependentUpon>ConsultaEstoque.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaEstoque.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetalhesVenda.Designer.vb">
+      <DependentUpon>DetalhesVenda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DetalhesVenda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estoque.Designer.vb">
+      <DependentUpon>Estoque.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Estoque.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EstoqueDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EstoqueDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EstoqueDataSet.vb">
+      <DependentUpon>EstoqueDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FecharCaixa.Designer.vb">
+      <DependentUpon>FecharCaixa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FecharCaixa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fornecedores.Designer.vb">
+      <DependentUpon>Fornecedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Fornecedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNivel.Designer.vb">
+      <DependentUpon>frmNivel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNivel.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Funcionarios.Designer.vb">
       <DependentUpon>Funcionarios.vb</DependentUpon>
     </Compile>
@@ -85,6 +176,28 @@
     </Compile>
     <Compile Include="Login.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginAdm.Designer.vb">
+      <DependentUpon>LoginAdm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoginAdm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIPrincipal.Designer.vb">
+      <DependentUpon>MDIPrincipal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MDIPrincipal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MercadoVBDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MercadoVBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MercadoVBDataSet1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MercadoVBDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -101,32 +214,217 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Principal.Designer.vb">
-      <DependentUpon>Principal.vb</DependentUpon>
+    <Compile Include="Produtos.Designer.vb">
+      <DependentUpon>Produtos.vb</DependentUpon>
     </Compile>
-    <Compile Include="Principal.vb">
+    <Compile Include="Produtos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutosDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProdutosDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Rel\FrmEstoqueData.Designer.vb">
+      <DependentUpon>FrmEstoqueData.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rel\FrmEstoqueData.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rel\frmRelCaixa.Designer.vb">
+      <DependentUpon>frmRelCaixa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rel\frmRelCaixa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rel\FrmRelNiveis.Designer.vb">
+      <DependentUpon>FrmRelNiveis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rel\FrmRelNiveis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rel\frmRelProdutos.Designer.vb">
+      <DependentUpon>frmRelProdutos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rel\frmRelProdutos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rel\frmCompVenda.Designer.vb">
+      <DependentUpon>frmCompVenda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rel\frmCompVenda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rel\FrmRelProdVend.Designer.vb">
+      <DependentUpon>FrmRelProdVend.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rel\FrmRelProdVend.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rel\frnRelVenda.Designer.vb">
+      <DependentUpon>frnRelVenda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Rel\frnRelVenda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sangria.Designer.vb">
+      <DependentUpon>Sangria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sangria.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Settings.vb" />
+    <Compile Include="Vendas.Designer.vb">
+      <DependentUpon>Vendas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vendas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendasDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VendasDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="VendasDataSet.vb">
+      <DependentUpon>VendasDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="VendasDiaAbreFechaCaixa.Designer.vb">
+      <DependentUpon>VendasDiaAbreFechaCaixa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VendasDiaAbreFechaCaixa.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AbrirCaixa.resx">
+      <DependentUpon>AbrirCaixa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes.resx">
+      <DependentUpon>Clientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaEstoque.resx">
+      <DependentUpon>ConsultaEstoque.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetalhesVenda.resx">
+      <DependentUpon>DetalhesVenda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estoque.resx">
+      <DependentUpon>Estoque.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FecharCaixa.resx">
+      <DependentUpon>FecharCaixa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fornecedores.resx">
+      <DependentUpon>Fornecedores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNivel.resx">
+      <DependentUpon>frmNivel.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Funcionarios.resx">
       <DependentUpon>Funcionarios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginAdm.resx">
+      <DependentUpon>LoginAdm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIPrincipal.resx">
+      <DependentUpon>MDIPrincipal.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Principal.resx">
-      <DependentUpon>Principal.vb</DependentUpon>
+    <EmbeddedResource Include="Produtos.resx">
+      <DependentUpon>Produtos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rel\CompVenda.rdlc" />
+    <EmbeddedResource Include="Rel\FrmEstoqueData.resx">
+      <DependentUpon>FrmEstoqueData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rel\frmRelCaixa.resx">
+      <DependentUpon>frmRelCaixa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rel\FrmRelNiveis.resx">
+      <DependentUpon>FrmRelNiveis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rel\frmRelProdutos.resx">
+      <DependentUpon>frmRelProdutos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rel\frmCompVenda.resx">
+      <DependentUpon>frmCompVenda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rel\FrmRelProdVend.resx">
+      <DependentUpon>FrmRelProdVend.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rel\frnRelVenda.resx">
+      <DependentUpon>frnRelVenda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rel\RelCaixa.rdlc" />
+    <EmbeddedResource Include="Rel\RelEntradaSaída.rdlc" />
+    <EmbeddedResource Include="Rel\RelEsoques.rdlc" />
+    <EmbeddedResource Include="Rel\RelNiveis.rdlc" />
+    <EmbeddedResource Include="Rel\RelProdutos.rdlc" />
+    <EmbeddedResource Include="Rel\RelProduVend.rdlc" />
+    <EmbeddedResource Include="Rel\RelVenda.rdlc" />
+    <EmbeddedResource Include="Sangria.resx">
+      <DependentUpon>Sangria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendas.resx">
+      <DependentUpon>Vendas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendasDiaAbreFechaCaixa.resx">
+      <DependentUpon>VendasDiaAbreFechaCaixa.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="CaixaVBDataSet.xsc">
+      <DependentUpon>CaixaVBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CaixaVBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CaixaVBDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CaixaVBDataSet.xss">
+      <DependentUpon>CaixaVBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EstoqueDataSet.xsc">
+      <DependentUpon>EstoqueDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EstoqueDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EstoqueDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EstoqueDataSet.xss">
+      <DependentUpon>EstoqueDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MercadoVBDataSet.xsc">
+      <DependentUpon>MercadoVBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MercadoVBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MercadoVBDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MercadoVBDataSet.xss">
+      <DependentUpon>MercadoVBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MercadoVBDataSet1.xsc">
+      <DependentUpon>MercadoVBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="MercadoVBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MercadoVBDataSet1.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MercadoVBDataSet1.xss">
+      <DependentUpon>MercadoVBDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -137,6 +435,87 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="ProdutosDataSet.xsc">
+      <DependentUpon>ProdutosDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProdutosDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProdutosDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProdutosDataSet.xss">
+      <DependentUpon>ProdutosDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="VendasDataSet.xsc">
+      <DependentUpon>VendasDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="VendasDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VendasDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="VendasDataSet.xss">
+      <DependentUpon>VendasDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\beep-01a.wav" />
+    <Content Include="Resources\loginAdm.png" />
+    <Content Include="SqlServerTypes\Loader.cs" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\CaixaAberto.png" />
+    <None Include="Resources\CaixaFechado.png" />
+    <None Include="Resources\btn_sair.png" />
+    <None Include="Resources\bt_novo.png" />
+    <Content Include="Resources\caixa2.ico" />
+    <None Include="Resources\caixa2.png" />
+    <Content Include="Resources\CaixaAberto.ico" />
+    <Content Include="Resources\CaixaFechado.ico" />
+    <None Include="Resources\fornecedores.jpg" />
+    <Content Include="Resources\iconfinder_clients_43573.png" />
+    <None Include="Resources\iconfinder_clients_435731.png" />
+    <None Include="Resources\ico_caixa.png" />
+    <None Include="Resources\ico_reg_venda.png" />
+    <Content Include="Resources\logoff.png" />
+    <None Include="Resources\logoff1.png" />
+    <None Include="Resources\rel2.png" />
+    <None Include="Resources\rel21.png" />
+    <Content Include="Resources\relatorio produtos.png" />
+    <None Include="Resources\relatorio produtos1.png" />
+    <Content Include="Resources\relatorio-produtos.ico" />
+    <Content Include="Resources\relatorio.ico" />
+    <Content Include="Resources\relatorio.png" />
+    <None Include="Resources\relatorio1.png" />
+    <Content Include="Resources\sangria.ico" />
+    <Content Include="Resources\sangria.png" />
+    <None Include="Resources\sangria1.png" />
+    <None Include="Resources\Shopping_Full.png" />
+    <None Include="Resources\semfoto.ico" />
+    <None Include="Resources\sem-foto.png" />
+    <Content Include="Resources\semfoto.png" />
+    <Content Include="Resources\Trocar.png" />
+    <None Include="Resources\Trocar1.png" />
+    <Content Include="Resources\users.ico" />
+    <None Include="Resources\users.png" />
+    <Content Include="Resources\venda-rapida.ico" />
+    <Content Include="Resources\venda-rapida.png" />
+    <None Include="Resources\venda-rapida1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

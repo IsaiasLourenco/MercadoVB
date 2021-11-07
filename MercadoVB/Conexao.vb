@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Module Conexao
+
     Public connect As New SqlConnection("Server=.; Database=MercadoVB; Integrated Security=SSPI")
 
     Sub abrir()
@@ -14,5 +15,19 @@ Module Conexao
             connect.Close()
         End If
     End Sub
+
+    Public usuarioNome As String
+
+    Public cargo As String
+
+    Public TotalVendido As Integer
+
+    Public TotalVendidoDia As Decimal
+
+    Public abertura As Boolean
+
+    Public ValorAbertura As Decimal
+
+    Public DataAbertura As DateTime
 
 End Module

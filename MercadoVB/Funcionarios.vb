@@ -2,11 +2,14 @@
 
 Public Class Funcionarios
     Private Sub Funcionarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         DesabilitarCampos()
         dtpDataAdm.Value = Now
+
         If rbtNome.Checked Then
             txtBuscar.Focus()
         End If
+
         btnEditar.Enabled = False
         btnExcluir.Enabled = False
         Listar()
@@ -24,7 +27,6 @@ Public Class Funcionarios
             dta.Fill(dt)
             dgvFuncionarios.DataSource = dt
             ContarLinhas()
-            'FormatarDGV()
         Catch ex As Exception
             MessageBox.Show(MessageBoxOptions.ServiceNotification, "Erro ao conectar ao banco de dados!")
             fechar()
@@ -34,24 +36,37 @@ Public Class Funcionarios
     Private Sub ContarLinhas()
         Dim Total As Integer = dgvFuncionarios.Rows.Count
         lblQtdeTotal.Text = Total
+        lblQtdeTotal.Text = lblQtdeTotal.Text.PadLeft(4, "0")
+
     End Sub
 
     Private Sub FormatarDGV()
-        dgvFuncionarios.ReadOnly = True
-        dgvFuncionarios.Columns(0).Visible = False
-        dgvFuncionarios.Columns(2).Visible = False
-        dgvFuncionarios.Columns(3).Visible = False
-        dgvFuncionarios.Columns(8).Visible = False
-        dgvFuncionarios.Columns(9).Visible = False
-        dgvFuncionarios.Columns(1).HeaderText = "Nome"
-        dgvFuncionarios.Columns(4).HeaderText = "C.P.F."
-        dgvFuncionarios.Columns(4).Width = 85
-        dgvFuncionarios.Columns(5).HeaderText = "Endereço"
-        dgvFuncionarios.Columns(5).Width = 280
-        dgvFuncionarios.Columns(6).HeaderText = "Telefone"
-        dgvFuncionarios.Columns(6).Width = 85
-        dgvFuncionarios.Columns(7).HeaderText = "E-mail"
-        dgvFuncionarios.Columns(7).Width = 180
+        Try
+            dgvFuncionarios.ReadOnly = True
+            dgvFuncionarios.Columns(0).Visible = False
+            dgvFuncionarios.Columns(2).Visible = False
+            dgvFuncionarios.Columns(3).Visible = False
+            dgvFuncionarios.Columns(5).Visible = False
+            dgvFuncionarios.Columns(12).Visible = False
+            dgvFuncionarios.Columns(13).Visible = False
+            dgvFuncionarios.Columns(15).Visible = False
+            dgvFuncionarios.Columns(1).HeaderText = "Nome"
+            dgvFuncionarios.Columns(4).HeaderText = "C.P.F."
+            dgvFuncionarios.Columns(4).Width = 85
+            dgvFuncionarios.Columns(6).HeaderText = "Rua"
+            dgvFuncionarios.Columns(7).HeaderText = "Número"
+            dgvFuncionarios.Columns(7).Width = 70
+            dgvFuncionarios.Columns(8).HeaderText = "Bairro"
+            dgvFuncionarios.Columns(8).Width = 150
+            dgvFuncionarios.Columns(9).HeaderText = "Cidade"
+            dgvFuncionarios.Columns(10).HeaderText = "Estado"
+            dgvFuncionarios.Columns(10).Width = 70
+            dgvFuncionarios.Columns(11).HeaderText = "Cargo"
+            dgvFuncionarios.Columns(14).HeaderText = "Turno"
+        Catch ex As Exception
+            MessageBox.Show(MessageBoxOptions.ServiceNotification, "Algo saiui errado!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2)
+        End Try
+
     End Sub
 
     Private Sub DesabilitarCampos()
@@ -59,7 +74,13 @@ Public Class Funcionarios
         cmbSexo.Enabled = False
         txtSenha.Enabled = False
         mktCPF.Enabled = False
-        txtEndereco.Enabled = False
+        mktCEP.Enabled = False
+        txtRua.Enabled = False
+        txtNumero.Enabled = False
+        txtBairro.Enabled = False
+        txtCidade.Enabled = False
+        txtEstado.Enabled = False
+        cmbCargo.Enabled = False
         mktTelefone.Enabled = False
         txtEmail.Enabled = False
         cmbTurno.Enabled = False
@@ -71,7 +92,13 @@ Public Class Funcionarios
         cmbSexo.Enabled = True
         txtSenha.Enabled = True
         mktCPF.Enabled = True
-        txtEndereco.Enabled = True
+        mktCEP.Enabled = True
+        txtRua.Enabled = True
+        txtNumero.Enabled = True
+        txtBairro.Enabled = True
+        txtCidade.Enabled = True
+        txtEstado.Enabled = True
+        cmbCargo.Enabled = True
         mktTelefone.Enabled = True
         txtEmail.Enabled = True
         cmbTurno.Enabled = True
@@ -80,15 +107,22 @@ Public Class Funcionarios
 
     Private Sub LimparCampos()
         txtNome.Text = ""
-        txtEndereco.Text = ""
-        mktCPF.Text = ""
+        cmbSexo.Text = ""
         txtSenha.Text = ""
+        mktCPF.Text = ""
+        mktCEP.Text = ""
+        txtRua.Text = ""
+        txtNumero.Text = ""
+        txtBairro.Text = ""
+        txtCidade.Text = ""
+        txtEstado.Text = ""
+        cmbCargo.Text = ""
         mktTelefone.Text = ""
         txtEmail.Text = ""
-        txtBuscar.Text = ""
-        dtpDataAdm.Value = Now
-        cmbSexo.Text = ""
         cmbTurno.Text = ""
+        dtpDataAdm.Value = Now
+        txtBuscar.Text = ""
+        mktCPFBusca.Text = ""
     End Sub
 
     Private Sub btnNovo_Click(sender As Object, e As EventArgs) Handles btnNovo.Click
@@ -108,7 +142,7 @@ Public Class Funcionarios
            cmbSexo.Text <> "" And
            txtSenha.Text <> "" And
            mktCPF.Text <> "" And
-           txtEndereco.Text <> "" And
+           txtRua.Text <> "" And
            mktTelefone.Text <> "" And
            txtEmail.Text <> "" And
            cmbTurno.Text <> "" Then
@@ -121,7 +155,13 @@ Public Class Funcionarios
                 cmd.Parameters.AddWithValue("@sexo", cmbSexo.Text)
                 cmd.Parameters.AddWithValue("@senha", txtSenha.Text)
                 cmd.Parameters.AddWithValue("@cpf", mktCPF.Text)
-                cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text)
+                cmd.Parameters.AddWithValue("@cep", mktCEP.Text)
+                cmd.Parameters.AddWithValue("@rua", txtRua.Text)
+                cmd.Parameters.AddWithValue("@num", txtNumero.Text)
+                cmd.Parameters.AddWithValue("@bairro", txtBairro.Text)
+                cmd.Parameters.AddWithValue("@cidade", txtCidade.Text)
+                cmd.Parameters.AddWithValue("@uf", txtEstado.Text)
+                cmd.Parameters.AddWithValue("@cargo", cmbCargo.Text)
                 cmd.Parameters.AddWithValue("@telefone", mktTelefone.Text)
                 cmd.Parameters.AddWithValue("@email", txtEmail.Text)
                 cmd.Parameters.AddWithValue("@turno ", cmbTurno.Text)
@@ -136,7 +176,7 @@ Public Class Funcionarios
                 MessageBox.Show(msg, "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
 
             Catch ex As Exception
-                MessageBox.Show("Erro ao gravar informações!" + ex.Message)
+                MessageBox.Show("Erro ao gravar informações! " + ex.Message)
                 fechar()
             End Try
 
@@ -211,13 +251,7 @@ Public Class Funcionarios
 
     Private Sub mktCPF_KeyPress(sender As Object, e As KeyPressEventArgs) Handles mktCPF.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
-            txtEndereco.Focus()
-        End If
-    End Sub
-
-    Private Sub txtEndereco_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtEndereco.KeyPress
-        If e.KeyChar = ChrW(Keys.Enter) Then
-            mktTelefone.Focus()
+            mktCEP.Focus()
         End If
     End Sub
 
@@ -254,7 +288,7 @@ Public Class Funcionarios
            cmbSexo.Text <> "" And
            txtSenha.Text <> "" And
            mktCPF.Text <> "" And
-           txtEndereco.Text <> "" And
+           txtRua.Text <> "" And
            mktTelefone.Text <> "" And
            txtEmail.Text <> "" And
            cmbTurno.Text <> "" Then
@@ -267,7 +301,13 @@ Public Class Funcionarios
                 cmd.Parameters.AddWithValue("@sexo", cmbSexo.Text)
                 cmd.Parameters.AddWithValue("@senha", txtSenha.Text)
                 cmd.Parameters.AddWithValue("@cpf", mktCPF.Text)
-                cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text)
+                cmd.Parameters.AddWithValue("@cep", mktCEP.Text)
+                cmd.Parameters.AddWithValue("@rua", txtRua.Text)
+                cmd.Parameters.AddWithValue("@num", txtNumero.Text)
+                cmd.Parameters.AddWithValue("@bairro", txtBairro.Text)
+                cmd.Parameters.AddWithValue("@cidade", txtCidade.Text)
+                cmd.Parameters.AddWithValue("@uf", txtEstado.Text)
+                cmd.Parameters.AddWithValue("@cargo", cmbCargo.Text)
                 cmd.Parameters.AddWithValue("@telefone", mktTelefone.Text)
                 cmd.Parameters.AddWithValue("@email", txtEmail.Text)
                 cmd.Parameters.AddWithValue("@turno ", cmbTurno.Text)
@@ -275,11 +315,11 @@ Public Class Funcionarios
                 cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
                 cmd.ExecuteNonQuery()
 
-                Listar()
-                LimparCampos()
-
                 Dim msg As String = cmd.Parameters("@mensagem").Value.ToString
                 MessageBox.Show(msg, "Aviso!!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+
+                Listar()
+                LimparCampos()
 
             Catch ex As Exception
                 MessageBox.Show("Erro ao atualizar informações!" + ex.Message)
@@ -314,11 +354,17 @@ Public Class Funcionarios
         cmbSexo.Text = dgvFuncionarios.CurrentRow.Cells(2).Value
         txtSenha.Text = dgvFuncionarios.CurrentRow.Cells(3).Value
         mktCPF.Text = dgvFuncionarios.CurrentRow.Cells(4).Value
-        txtEndereco.Text = dgvFuncionarios.CurrentRow.Cells(5).Value
-        mktTelefone.Text = dgvFuncionarios.CurrentRow.Cells(6).Value
-        txtEmail.Text = dgvFuncionarios.CurrentRow.Cells(7).Value
-        cmbTurno.Text = dgvFuncionarios.CurrentRow.Cells(8).Value
-        dtpDataAdm.Text = dgvFuncionarios.CurrentRow.Cells(9).Value
+        mktCEP.Text = dgvFuncionarios.CurrentRow.Cells(5).Value
+        txtRua.Text = dgvFuncionarios.CurrentRow.Cells(6).Value
+        txtNumero.Text = dgvFuncionarios.CurrentRow.Cells(7).Value
+        txtBairro.Text = dgvFuncionarios.CurrentRow.Cells(8).Value
+        txtCidade.Text = dgvFuncionarios.CurrentRow.Cells(9).Value
+        txtEstado.Text = dgvFuncionarios.CurrentRow.Cells(10).Value
+        cmbCargo.Text = dgvFuncionarios.CurrentRow.Cells(11).Value
+        mktTelefone.Text = dgvFuncionarios.CurrentRow.Cells(12).Value
+        txtEmail.Text = dgvFuncionarios.CurrentRow.Cells(13).Value
+        cmbTurno.Text = dgvFuncionarios.CurrentRow.Cells(14).Value
+        dtpDataAdm.Text = dgvFuncionarios.CurrentRow.Cells(15).Value
 
         mktCPFBusca.Text = ""
 
@@ -344,7 +390,7 @@ Public Class Funcionarios
                 ContarLinhas()
 
             Catch ex As Exception
-
+                MessageBox.Show("Algo saiu errado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End If
     End Sub
@@ -369,12 +415,13 @@ Public Class Funcionarios
                 ContarLinhas()
 
             Catch ex As Exception
-
+                MessageBox.Show("Algo saiu errado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End If
     End Sub
 
     Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
+
         Dim cmd As SqlCommand
 
         If mktCPF.Text <> "" Then
@@ -384,18 +431,65 @@ Public Class Funcionarios
                 cmd.CommandType = CommandType.StoredProcedure
                 cmd.Parameters.AddWithValue("@cpf", mktCPF.Text)
                 cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
-                Dim msg As String = cmd.Parameters("@mensagem").Value.ToString
-                MessageBox.Show(msg, "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
-                Listar()
-                LimparCampos()
-                btnGravar.Enabled = False
-                btnExcluir.Enabled = False
-                btnEditar.Enabled = False
-                btnNovo.Enabled = True
+                Dim result As DialogResult = MessageBox.Show("Tem certeza de que quer excluir o registro?", "Validação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3)
+                Select Case result
+                    Case Windows.Forms.DialogResult.Yes
+                        cmd.ExecuteNonQuery()
+                        Dim msg As String = cmd.Parameters("@mensagem").Value.ToString
+                        MessageBox.Show(msg, "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                        Listar()
+                        LimparCampos()
+                        btnGravar.Enabled = False
+                        btnExcluir.Enabled = False
+                        btnEditar.Enabled = False
+                        btnNovo.Enabled = True
+                        Listar()
+                        fechar()
+                    Case Windows.Forms.DialogResult.No
+                        HabilitarCampos()
+                        LimparCampos()
+                        btnNovo.Enabled = False
+                        btnGravar.Enabled = True
+                        txtNome.Focus()
+                End Select
+
             Catch ex As Exception
                 MessageBox.Show("Erro ao atualizar banco de dados! " + ex.Message)
                 fechar()
             End Try
+        End If
+    End Sub
+
+    Private Sub mktCEP_KeyPress(sender As Object, e As KeyPressEventArgs) Handles mktCEP.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            btnBuscarCEP.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNumero_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumero.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            cmbCargo.Focus()
+        End If
+    End Sub
+
+    Private Sub btnBuscarCEP_Click(sender As Object, e As EventArgs) Handles btnBuscarCEP.Click
+        Try
+            Dim ds As New DataSet()
+            Dim xml As String = "http://cep.republicavirtual.com.br/web_cep.php?cep=@cep&formato=xml".Replace("@cep", mktCEP.Text)
+            ds.ReadXml(xml)
+            txtRua.Text = ds.Tables(0).Rows(0)("logradouro").ToString()
+            txtBairro.Text = ds.Tables(0).Rows(0)("bairro").ToString()
+            txtCidade.Text = ds.Tables(0).Rows(0)("cidade").ToString()
+            txtEstado.Text = ds.Tables(0).Rows(0)("uf").ToString()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Erro")
+        End Try
+        txtNumero.Focus()
+    End Sub
+
+    Private Sub cmbCargo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbCargo.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            mktTelefone.Focus()
         End If
     End Sub
 End Class
